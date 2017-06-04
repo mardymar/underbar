@@ -344,7 +344,7 @@
       for(var i = 2; i < arguments.length; i++){
         args.push(arguments[i]);
       }
-        
+
       setTimeout(function(){func.apply(this, args)}, wait);
     };
 
@@ -360,6 +360,16 @@
     // input array. For a tip on how to make a copy of an array, see:
     // http://mdn.io/Array.prototype.slice
     _.shuffle = function (array) {
+        var results = array.slice();
+        for(var i = 0; i <= results.length - 2; i++){
+            var rand = Math.floor(Math.random()*results.length);
+
+            var temp = results[rand];
+            results[rand] = results[i];
+            results[i] = temp;
+        }
+
+        return results;
     };
 
 
