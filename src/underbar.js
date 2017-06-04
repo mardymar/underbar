@@ -319,7 +319,14 @@
     // already computed the result for the given argument and return that value
     // instead if possible.
     _.memoize = function (func) {
-        
+        var answers = [];
+
+        var args = JSON.stringify(arguments);
+        if(answers[args] === undefined){
+            answers[args] = func.apply(arguments);
+        }
+
+        return answers[args];
     };
 
     // Delays a function for the given number of milliseconds, and then calls
